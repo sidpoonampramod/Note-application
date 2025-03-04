@@ -133,9 +133,9 @@ document.getElementById('sortByTitleBtn').addEventListener('click', function() {
 // Initial display of notes when the page loads
 displayNotes();
 
-Swal.fire({
-    icon: 'success',
-    title: 'Note Saved',
-    text: 'Your note has been saved successfully!',
-    confirmButtonText: 'Okay'
-});
+// Swal.fire({
+//     icon: 'success',
+//     title: 'Note Saved',
+//     text: 'Your note has been saved successfully!',
+//     confirmButtonText: 'Okay'
+// });
