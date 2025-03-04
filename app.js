@@ -64,11 +64,9 @@ function displayNotes() {
     // Get the search query
     const searchQuery = document.getElementById('searchBar').value.toLowerCase();
 
-    // Filter notes based on search query (by title or date)
+    // Filter notes based only on the title search query
     const filteredNotes = notes.filter(note => {
-        const titleMatch = note.title.toLowerCase().includes(searchQuery);
-        const dateMatch = moment(note.date).format('MMMM Do YYYY').toLowerCase().includes(searchQuery);
-        return titleMatch || dateMatch; // Return notes that match either title or date
+        return note.title.toLowerCase().includes(searchQuery); // Only search by title
     });
 
     // Display filtered notes
@@ -103,6 +101,11 @@ function displayNotes() {
     });
 }
 
+// Search functionality (search on input change)
+document.getElementById('searchBar').addEventListener('input', function() {
+    displayNotes(); // Re-display the notes based on search input
+});
+
 // Sort notes by date (ascending)
 document.getElementById('sortByDateBtn').addEventListener('click', function() {
     // Sort notes array by the 'date' field (ascending order)
@@ -127,10 +130,12 @@ document.getElementById('sortByTitleBtn').addEventListener('click', function() {
     displayNotes();
 });
 
-// Search functionality (search on input change)
-document.getElementById('searchBar').addEventListener('input', function() {
-    displayNotes(); // Re-display the notes based on search input
-});
-
 // Initial display of notes when the page loads
 displayNotes();
+
+Swal.fire({
+    icon: 'success',
+    title: 'Note Saved',
+    text: 'Your note has been saved successfully!',
+    confirmButtonText: 'Okay'
+});
